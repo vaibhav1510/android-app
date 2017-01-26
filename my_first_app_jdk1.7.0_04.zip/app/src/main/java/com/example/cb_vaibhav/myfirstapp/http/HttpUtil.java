@@ -6,8 +6,9 @@ import com.example.cb_vaibhav.myfirstapp.http.HttpConfig;
 
 import java.io.*;
 import java.net.*;
-import java.util.StringJoiner;
 import java.util.zip.GZIPInputStream;
+
+import static com.example.cb_vaibhav.myfirstapp.http.HttpConfig.UTF8;
 
 import org.json.*;
 
@@ -21,60 +22,6 @@ public class HttpUtil {
 
     }
 
-    /**
-     * To temporarily capture the http response
-     */
-    public static class Response {
-
-        public final int httpCode;
-
-        public final Map<String, String> headers;
-
-        public final String content;
-
-        private Response(int httpCode, Map<String, String> headers, String content) {
-            this.httpCode = httpCode;
-            this.headers = headers;
-            this.content = content;
-        }
-
-        public boolean isSuccess() {
-            return httpCode > 199 && httpCode < 300; // 20x codes
-        }
-
-        public boolean is40x() {
-            return httpCode > 399 && httpCode < 500;
-        }
-
-        public boolean is50x() {
-            return httpCode > 499;
-        }
-
-        public JSONObject jsonContent() {
-            JSONObject obj;
-            try {
-                obj = new JSONObject(content);
-            } catch (JSONException exp) {
-                throw new RuntimeException(content);
-            }
-            checkRequiredJSONResp(obj);
-            return obj;
-        }
-
-        public JSONArray jsonArrayContent() {
-            JSONArray arr;
-            try {
-                arr = _jsonArrayContent();
-            } catch (JSONException exp) {
-                throw new RuntimeException(content);
-            }
-            return arr;
-        }
-
-        public JSONArray _jsonArrayContent() throws JSONException {
-            return new JSONArray(content);
-        }
-    }
 
     private HttpConfig httpConfig;
 
@@ -83,16 +30,12 @@ public class HttpUtil {
     }
 
     public Response get(String url, Params params) throws IOException {
-        return get(url, params, null);
-    }
-
-    public Response get(String url, Params params, Map<String, String> extraHeaders) throws IOException {
-        return get(url, params, extraHeaders, true);
+        return get(url, params, null, true);
     }
 
     public Response get(String url, Params params, Map<String, String> extraHeaders, boolean throwIfEmptyResponse) throws IOException {
 
-        String queryStr = params == null ? null : JspUtils.toQueryStr(params.map());
+        String queryStr = toQueryStr(params.map());
         if (queryStr != null && !queryStr.isEmpty()) {
             url = url + '?' + queryStr;
         }
@@ -106,27 +49,11 @@ public class HttpUtil {
     }
 
     public Response post(String url, Params params, Map<String, String> extraHeaders) throws IOException {
-        return post(url, params == null ? null : JspUtils.toQueryStr(params.map()), extraHeaders);
-    }
-
-    public Response post(String url, String content) throws IOException {
-        return post(url, content, null);
+        return post(url, toQueryStr(params.map()), extraHeaders);
     }
 
     public Response post(String url, String content, Map<String, String> extraHeaders) throws IOException {
         return doFormSubmit(url, Method.POST, content, extraHeaders);
-    }
-
-    public Response put(String url, Params params, Map<String, String> extraHeaders) throws IOException {
-        return put(url, JspUtils.toQueryStr(params.map()), extraHeaders);
-    }
-
-    public Response put(String url, String content) throws IOException {
-        return doFormSubmit(url, Method.PUT, content, null);
-    }
-
-    public Response put(String url, String content, Map<String, String> extraHeaders) throws IOException {
-        return doFormSubmit(url, Method.PUT, content, extraHeaders);
     }
 
     private Response doFormSubmit(String url, Method m, String queryStr, Map<String, String> extraHeaders) throws IOException {
@@ -139,17 +66,29 @@ public class HttpUtil {
         return resp;
     }
 
-    public static String toQueryStr(Map<String, String> map) throws Exception{
-        StringJoiner buf = new StringJoiner("&");
-        for(Map.Entry<String, String> entry : map.entrySet()){
+    public static String toQueryStr(Map<String, String> map) {
+        if (map == null || map.isEmpty()) {
+            return "";
+        }
+        StringBuffer buf = new StringBuffer();
+        int i = 0;
+        for (Map.Entry<String, String> entry : map.entrySet()) {
             String keyValPair = escQuery(entry.getKey()) + "=" + escQuery(entry.getValue());
-            buf.add(keyValPair);
+            buf.append(keyValPair);
+            i++;
+            if (i != map.size()) {
+                buf.append("&");
+            }
         }
         return buf.toString();
     }
 
-    public static String escQuery(String queryComp) throws Exception{
-        return URLEncoder.encode(queryComp, "UTF-8");
+    public static String escQuery(String queryComp) {
+        try {
+            return URLEncoder.encode(queryComp, UTF8);
+        } catch (UnsupportedEncodingException exp) {
+            throw new RuntimeException(exp.getMessage(), exp);
+        }
     }
 
     private static void writeContent(HttpURLConnection conn, String queryStr)
@@ -159,7 +98,7 @@ public class HttpUtil {
         }
         OutputStream os = conn.getOutputStream();
         try {
-            os.write(queryStr.getBytes(Env.encoding()));
+            os.write(queryStr.getBytes(UTF8));
         } finally {
             os.close();
         }
@@ -172,7 +111,7 @@ public class HttpUtil {
         setTimeouts(conn, httpConfig);
         addHeaders(conn, httpConfig, extraHeaders);
         if (m == Method.POST || m == Method.PUT) {
-            addHeader(conn, "Content-Type", httpConfig.contentType + ";charset=" + Env.encoding());
+            addHeader(conn, "Content-Type", httpConfig.contentType + ";charset=" + UTF8);
             conn.setDoOutput(true);
         }
         conn.setUseCaches(false);
@@ -182,11 +121,8 @@ public class HttpUtil {
     private static Response sendRequest(HttpURLConnection conn, boolean throwIfEmptyResponse) throws IOException {
         long time = System.currentTimeMillis();
         int httpRespCode;
-        try {
-            httpRespCode = conn.getResponseCode();
-        } finally {
-            KVL.callTime("httputil", time);
-        }
+
+        httpRespCode = conn.getResponseCode();
         if (httpRespCode == HttpURLConnection.HTTP_NO_CONTENT) {
             throw new RuntimeException("Got http_no_content response");
         }
@@ -200,7 +136,7 @@ public class HttpUtil {
     }
 
     private static void addHeaders(HttpURLConnection conn, HttpConfig config, Map<String, String> extraHeaders) {
-        addHeader(conn, "Accept-Charset", Env.encoding());
+        addHeader(conn, "Accept-Charset", UTF8);
         if (config.username != null) {
             addHeader(conn, "Authorization", getAuthValue(config));
         }
@@ -241,7 +177,7 @@ public class HttpUtil {
     private static String getContentAsString(HttpURLConnection conn,
                                              boolean error, boolean throwIfEmptyResponse) throws IOException {
         if (error) {
-            //throw GlobalUtil.rtExp("");
+            //throw err
         }
         InputStream resp = (error) ? conn.getErrorStream() : conn.getInputStream();
         if (resp == null) {
@@ -255,7 +191,7 @@ public class HttpUtil {
             if ("gzip".equalsIgnoreCase(conn.getContentEncoding())) {
                 resp = new GZIPInputStream(resp);
             }
-            InputStreamReader inp = new InputStreamReader(resp, Env.encoding());
+            InputStreamReader inp = new InputStreamReader(resp, UTF8);
             StringBuilder buf = new StringBuilder();
             char[] buffer = new char[1024];//Should use content length.
             int bytesRead;
@@ -269,12 +205,60 @@ public class HttpUtil {
         }
     }
 
-    private static void checkRequiredJSONResp(JSONObject respObj) {
-        if (respObj == null) {
-            throw new RuntimeException(
-                    "Expected json formatted content in response");
+    /**
+     * To temporarily capture the http response
+     */
+    public static class Response {
+
+        public final int httpCode;
+
+        public final Map<String, String> headers;
+
+        public final String content;
+
+        private Response(int httpCode, Map<String, String> headers, String content) {
+            this.httpCode = httpCode;
+            this.headers = headers;
+            this.content = content;
+        }
+
+        public boolean isSuccess() {
+            return httpCode > 199 && httpCode < 300; // 20x codes
+        }
+
+        public boolean is40x() {
+            return httpCode > 399 && httpCode < 500;
+        }
+
+        public boolean is50x() {
+            return httpCode > 499;
+        }
+
+        public JSONObject jsonContent() {
+            JSONObject obj;
+            try {
+                obj = new JSONObject(content);
+            } catch (JSONException exp) {
+                throw new RuntimeException(content);
+            }
+            return obj;
+        }
+
+        public JSONArray jsonArrayContent() {
+            JSONArray arr;
+            try {
+                arr = _jsonArrayContent();
+            } catch (JSONException exp) {
+                throw new RuntimeException(content);
+            }
+            return arr;
+        }
+
+        public JSONArray _jsonArrayContent() throws JSONException {
+            return new JSONArray(content);
         }
     }
+
 
 }
 

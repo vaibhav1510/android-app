@@ -12,8 +12,13 @@ public class Params {
 
     Map<String, String> paramList = new HashMap<>();
 
-    public Params put(String key, String val){
+    public Params put(String key, String val) {
         paramList.put(key, val);
         return this;
     }
+
+    public Map<String, String> map() {
+        return this.paramList;
+    }
 }
+

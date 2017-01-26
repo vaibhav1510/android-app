@@ -18,6 +18,8 @@ public class HttpConfig {
 
     public int readTimeout;
 
+    public static final String UTF8 = "UTF-8";
+
     public HttpConfig(String username) {
         this(username, null);
     }

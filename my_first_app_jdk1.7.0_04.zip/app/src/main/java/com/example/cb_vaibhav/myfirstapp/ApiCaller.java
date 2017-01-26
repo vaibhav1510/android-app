@@ -20,8 +20,9 @@ public class ApiCaller {
     public String request(String url) throws Exception {
         HttpConfig config = new HttpConfig(userName, passwd);
         HttpUtil http = new HttpUtil(config);
-        http.get(url, new Params());
-
+        HttpUtil.Response resp = http.get(url, new Params());
+        System.out.println(resp.jsonContent().toString(2));
+        return resp.jsonContent().toString(2);
     }
 
 }
