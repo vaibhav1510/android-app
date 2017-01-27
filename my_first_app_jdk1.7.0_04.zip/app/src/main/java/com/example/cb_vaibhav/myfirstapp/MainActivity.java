@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ApiCaller caller = new ApiCaller("har@gmail.com", "pasword");
         try {
+//            urename = tripty.dmx.com
+//            password123456789
             String jsonStr = caller.request("www.dmxtech.com/service_desk");
             JSONObject jsonObj = new JSONObject(jsonStr);
             this.agentName = jsonObj.getString("agentName");
