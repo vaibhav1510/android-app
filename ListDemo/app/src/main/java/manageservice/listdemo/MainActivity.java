@@ -44,18 +44,26 @@ public class  MainActivity extends Activity {
     public void setListData()
     {
 
-        for (int i = 0; i < 11; i++) {
+      
 
-            final ListModel sched = new ListModel();
-
+            final ListModel sched1 = new ListModel();
+            final ListModel schel2 = new ListModel();
+                
             /******* Firstly take data in model object ******/
-            sched.setCustomerName("Customer Name "+i);
-            sched.setIncidentId("Incident Id"+i);
-            sched.setSummary("Summary"+i);
-            sched.setDescription(""+i);
+            sched1.setCustomerName("Customer Name "+ "Harshita");
+            sched1.setIncidentId("Incident Id" "IC2019980");
+            sched1.setSummary("Summary" "write the summary here..");
+            sched1.setDescription("Description" "write the description here..");
             /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add( sched );
-        }
+            CustomListViewValuesArr.add( sched1 );
+       
+        /******* Firstly take data in model object ******/
+            sched1.setCustomerName("Customer Name " "Nikita");
+            sched1.setIncidentId("Incident Id" "IC6565122");
+            sched1.setSummary("Summary" "RAM is not working");
+            sched1.setDescription("Description" "my RAM is not working");
+            /******** Take Model Object in ArrayList **********/
+            CustomListViewValuesArr.add( sched2 );
 
     }
 
@@ -70,4 +78,4 @@ public class  MainActivity extends Activity {
 
         Toast.makeText(CustomListView, "Customername:"+tempValues.getCustomerName() +" IncidentId:"+tempValues.getIncidentId() +" Summary:"+tempValues.getSummary() + " Description:"+tempValues.getDescription(), Toast.LENGTH_LONG).show();
     }
-}
+} 
