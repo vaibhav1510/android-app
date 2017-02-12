@@ -58,10 +58,10 @@ public class  MainActivity extends Activity {
             CustomListViewValuesArr.add( sched1 );
        
         /******* Firstly take data in model object ******/
-            sched1.setCustomerName( "Nikita");
-            sched1.setIncidentId("IC6565122");
-            sched1.setSummary("RAM is not working");
-            sched1.setDescription( "my RAM is not working");
+            sched2.setCustomerName( "Nikita");
+            sched2.setIncidentId("IC6565122");
+            sched2.setSummary("RAM is not working");
+            sched2.setDescription( "my RAM is not working");
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add( sched2 );
 
