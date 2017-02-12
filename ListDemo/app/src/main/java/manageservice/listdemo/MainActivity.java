@@ -50,18 +50,18 @@ public class  MainActivity extends Activity {
             final ListModel schel2 = new ListModel();
                 
             /******* Firstly take data in model object ******/
-            sched1.setCustomerName("Customer Name "+ "Harshita");
-            sched1.setIncidentId("Incident Id" "IC2019980");
-            sched1.setSummary("Summary" "write the summary here..");
-            sched1.setDescription("Description" "write the description here..");
+            sched1.setCustomerName("Harshita");
+            sched1.setIncidentId( "IC2019980");
+            sched1.setSummary("write the summary here..");
+            sched1.setDescription("write the description here..");
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add( sched1 );
        
         /******* Firstly take data in model object ******/
-            sched1.setCustomerName("Customer Name " "Nikita");
-            sched1.setIncidentId("Incident Id" "IC6565122");
-            sched1.setSummary("Summary" "RAM is not working");
-            sched1.setDescription("Description" "my RAM is not working");
+            sched1.setCustomerName( "Nikita");
+            sched1.setIncidentId("IC6565122");
+            sched1.setSummary("RAM is not working");
+            sched1.setDescription( "my RAM is not working");
             /******** Take Model Object in ArrayList **********/
             CustomListViewValuesArr.add( sched2 );
 
