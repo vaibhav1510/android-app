@@ -61,13 +61,21 @@ public class PostUrl2 {
 //                    .replaceAll("\r?", "").replaceAll("\n?", "");
 //            conn.setRequestProperty("Authorization", "BASIC " + apiKey);
 
+            //conn.setRequestProperty("username", "tripti@dmc.com");
+            //conn.setRequestProperty("password", "123456789");
+            String userName = "tripti@dmc.com";
+            String passwd = "123456789";
+            String userNamePasswd = "Basic " + Base64.encodeToString((userName + ":" + passwd).getBytes(), Base64.DEFAULT)
+                    .replaceAll("\r?", "").replaceAll("\n?", "");
+            conn.setRequestProperty("Authorization", userNamePasswd);
+
 
             BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 
             String output;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
-                output +=output;
+                output += output;
             }
             String value = conn.getHeaderField(output);
             conn.disconnect();
