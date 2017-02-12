@@ -46,24 +46,24 @@ public class  MainActivity extends Activity {
 
       
 
-            final ListModel sched1 = new ListModel();
-            final ListModel schel2 = new ListModel();
-                
-            /******* Firstly take data in model object ******/
-            sched1.setCustomerName("Harshita");
-            sched1.setIncidentId( "IC2019980");
-            sched1.setSummary("write the summary here..");
-            sched1.setDescription("write the description here..");
-            /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add( sched1 );
-       
+        final ListModel sched1 = new ListModel();
+        final ListModel schel2 = new ListModel();
+
         /******* Firstly take data in model object ******/
-            sched2.setCustomerName( "Nikita");
-            sched2.setIncidentId("IC6565122");
-            sched2.setSummary("RAM is not working");
-            sched2.setDescription( "my RAM is not working");
-            /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add( sched2 );
+        sched1.setCustomerName("Harshita");
+        sched1.setIncidentId( "IC2019980");
+        sched1.setSummary("write the summary here..");
+        sched1.setDescription("write the description here..");
+        /******** Take Model Object in ArrayList **********/
+        CustomListViewValuesArr.add( sched1 );
+
+        /******* Firstly take data in model object ******/
+        schel2.setCustomerName( "Nikita");
+        schel2.setIncidentId("IC6565122");
+        schel2.setSummary("RAM is not working");
+        schel2.setDescription( "my RAM is not working");
+        /******** Take Model Object in ArrayList **********/
+        CustomListViewValuesArr.add( schel2 );
 
     }
 
