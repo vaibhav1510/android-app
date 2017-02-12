@@ -89,7 +89,7 @@ public class ListAdapter extends BaseAdapter implements View.OnClickListener {
 
         if(data.size()<=0)
         {
-            holder.text.setText("No Data");
+            holder.customername.setText("No Data");
 
         }
         else

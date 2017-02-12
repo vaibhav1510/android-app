@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -36,67 +35,7 @@ public class  MainActivity extends Activity {
         list= ( ListView )findViewById( R.id.list );  // List defined in XML ( See Below )
 
         /**************** Create Custom Adapter *********/
-        adapter=new ListAdapter(CustomListView, CustomListViewValuesArr, res) {
-            @Override
-            public boolean areAllItemsEnabled() {
-                return false;
-            }
-
-            @Override
-            public boolean isEnabled(int position) {
-                return false;
-            }
-
-            @Override
-            public void registerDataSetObserver(DataSetObserver observer) {
-
-            }
-
-            @Override
-            public void unregisterDataSetObserver(DataSetObserver observer) {
-
-            }
-
-            @Override
-            public int getCount() {
-                return 0;
-            }
-
-            @Override
-            public Object getItem(int position) {
-                return null;
-            }
-
-            @Override
-            public long getItemId(int position) {
-                return 0;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                return null;
-            }
-
-            @Override
-            public int getItemViewType(int position) {
-                return 0;
-            }
-
-            @Override
-            public int getViewTypeCount() {
-                return 0;
-            }
-
-            @Override
-            public boolean isEmpty() {
-                return false;
-            }
-        };
+        adapter=new ListAdapter(CustomListView, CustomListViewValuesArr, res);
         list.setAdapter( adapter );
 
     }
