@@ -33,8 +33,8 @@ public class HomeActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentAddIncident = new Intent(HomeActivity.this, AddIncident.class);
-                startActivity(intentAddIncident);
+//                Intent intentAddIncident = new Intent(HomeActivity.this, AddIncident.class);
+//                startActivity(intentAddIncident);
               //  Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             }
         });

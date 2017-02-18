@@ -9,6 +9,6 @@ public class AddIncident extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_incident);
-        Intent intent=getIntent();
+//        Intent intent=getIntent();
     }
 }

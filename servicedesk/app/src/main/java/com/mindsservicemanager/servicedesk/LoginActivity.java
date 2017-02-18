@@ -44,7 +44,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     Button btn;
-    EditText email,pass, Dom;
+    AutoCompleteTextView email,pass, Dom;
     String username, password, Domain;
     String csrftoken, token;
 
@@ -78,9 +78,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         btn=(Button)findViewById(R.id.login);
 
-        email=(EditText)findViewById(R.id.email);
-        pass=(EditText)findViewById(R.id.password);
-        Dom=(EditText)findViewById(R.id.Domain);
+        email=(AutoCompleteTextView)findViewById(R.id.email);
+        pass=(AutoCompleteTextView)findViewById(R.id.password);
+        Dom=(AutoCompleteTextView)findViewById(R.id.Domain);
 
         username=email.getText().toString();
         password=pass.getText().toString();
@@ -124,6 +124,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 /*csrftoken= obj.getcsrftoken("http://192.168.50.228");
                 token= obj.gettoken("http://192.168.50.228" , in);
                 obj.postrequest("http://192.168.50.228", "",in);*/
+
+                System.out.println("username==>"+username);
+                System.out.println("password==>"+password);
+                System.out.println("Domain==>"+Domain);
+
                 csrftoken= obj.getcsrftoken(Domain);
                 token= obj.gettoken(Domain , in);
                 obj.postrequest(Domain, "",in);

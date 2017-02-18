@@ -44,19 +44,24 @@ public class  MainActivity extends Activity {
     public void setListData()
     {
 
-        for (int i = 0; i < 11; i++) {
+        final ListModel sched1 = new ListModel();
+        final ListModel schel2 = new ListModel();
 
-            final ListModel sched = new ListModel();
+        /******* Firstly take data in model object ******/
+        sched1.setCustomerName("Harshita");
+        sched1.setIncidentId( "IC2019980");
+        sched1.setSummary("write the summary here..");
+        sched1.setDescription("write the description here..");
+        /******** Take Model Object in ArrayList **********/
+        CustomListViewValuesArr.add( sched1 );
 
-            /******* Firstly take data in model object ******/
-            sched.setCustomerName("Customer Name "+i);
-            sched.setIncidentId("Incident Id"+i);
-            sched.setSummary("Summary"+i);
-            sched.setDescription(""+i);
-            /******** Take Model Object in ArrayList **********/
-            CustomListViewValuesArr.add( sched );
-        }
-
+        /******* Firstly take data in model object ******/
+        schel2.setCustomerName( "Nikita");
+        schel2.setIncidentId("IC6565122");
+        schel2.setSummary("RAM is not working");
+        schel2.setDescription( "my RAM is not working");
+        /******** Take Model Object in ArrayList **********/
+        CustomListViewValuesArr.add( schel2 );
     }
 
 
