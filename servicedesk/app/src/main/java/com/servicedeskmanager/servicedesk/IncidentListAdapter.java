@@ -128,7 +128,7 @@ public class IncidentListAdapter extends BaseAdapter implements View.OnClickList
             holder.priority.setText(tempValues.getPriority());
             holder.sladate.setText( tempValues.getSlaDate() );
 
-            holder.status.setBackgroundColor(Color.MAGENTA);
+            holder.status.setBackgroundColor(Color.CYAN);
 
             holder.state.setBackgroundColor(Color.RED);
 

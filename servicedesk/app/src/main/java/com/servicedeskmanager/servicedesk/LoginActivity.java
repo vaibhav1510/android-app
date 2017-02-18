@@ -262,7 +262,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         addEmailsToAutoComplete(emails);
     }
 
-
     @Override
     public void onLoaderReset(Loader<Cursor> cursorLoader) {
 
@@ -358,5 +357,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+    @Override
+    public void onBackPressed(){
     }
 }

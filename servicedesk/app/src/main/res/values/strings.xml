@@ -19,4 +19,32 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="action_search">Search</string>
+
+    <string name="category">Category</string>
+    <string name="impact">Impact</string>
+    <string name="impact_service">Impact Service</string>
+    <string name="urgency">Urgency</string>
+    <string name="priority">Priority</string>
+    <string name="summary">Summary</string>
+    <string name="description">Description</string>
+    
+    <string name="state">State</string>
+    <string name="status">Status</string>
+
+    <string name="requester_details">Requester Details</string>
+    <string name="details">Details</string>
+    <string name="incident_details">Incident Details</string>
+    <string name="resolution_details">Resolution Details</string>
+    
+    <string name="symptom">Symptom</string>
+    <string name="resolution">Resolution</string>
+    <string name="root_cause">Root Cause</string>
+    <string name="trouble_reason">Trouble_Reason</string>
+    <string name="recovery_action">Recovery Action</string>
+    <string name="classification">Classification</string>
+
+
+
+
 </resources>

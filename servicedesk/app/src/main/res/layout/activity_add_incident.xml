@@ -20,13 +20,15 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
             android:layout_height="wrap_content"
             android:background="#FFFFFF">
 
-            <EditText android:layout_width="350dp"
+            <EditText
+                android:id="@+id/add_search"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="20dp"
-                android:hint="Search"
+                android:hint="@string/action_search"
                 android:textColor="#706c6c"
                 android:inputType="text"
                 android:drawableRight="@drawable/ic_action_search"
@@ -34,18 +36,18 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
         </LinearLayout>
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/req_details"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:text="   Requester Details"
+            android:text="@string/requester_details"
+            android:layout_marginLeft="10dp"
             android:textSize="20dp"
-            android:id="@+id/textView2"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray" />
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,37 +74,35 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
 
 
                 <TextView
+                    android:id="@+id/req_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/req_name"
                     android:textSize="20dp"
                     android:textColor="#000000"
-                    android:text="Harshita Gupta"
                     android:hint="Requester Name"
                     />
                 <TextView
+                    android:id="@+id/req_phon_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:id="@+id/req_phon_no"
                     android:textSize="17dp"
                     android:textColor="#000000"
-                    android:text="758738566"
                     android:hint="Phone No"
                     android:gravity="center"
                     android:drawableLeft="@drawable/ic_phone"/>
 
                 <TextView
+                    android:id="@+id/req_mail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
                     android:textSize="17dp"
                     android:textColor="#000000"
-                    android:text="har@gmail.com"
                     android:hint="Email Id"
                     android:gravity="center"
                     android:drawableLeft="@drawable/ic_mail"
@@ -115,10 +115,12 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
             android:layout_height="1dp"
             android:background="@android:color/darker_gray" />
         <TextView
+            android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="   Details"
+            android:text=  "@string/details"
             android:textSize="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="10dp"/>
 
@@ -134,7 +136,7 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
                 android:id="@+id/Category_spinner"
                 android:layout_height="wrap_content"
                 android:layout_width="350dp"
-                android:hint="  Category"
+                android:hint="@string/category"
                 android:layout_alignParentStart="true"
                 android:textColorHint="#FFFFFF"
                 android:layout_marginTop="30dp"
@@ -142,10 +144,10 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
                 />
 
             <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/impect_spinner"
+                android:id="@+id/impact_spinner"
                 android:layout_height="wrap_content"
                 android:layout_width="350dp"
-                android:hint="  Impect Service"
+                android:hint="@string/impact_service"
                 android:layout_alignParentStart="true"
                 android:textColorHint="#FFFFFF"
                 android:layout_marginTop="30dp"
@@ -157,29 +159,32 @@ tools:context="com.servicedeskmanager.servicedesk.Add_incident">
                 android:id="@+id/Urgency_spinner"
                 android:layout_height="wrap_content"
                 android:layout_width="350dp"
-                android:hint="  Urgency"
+                android:hint="@string/urgency"
                 android:layout_alignParentStart="true"
                 android:textColorHint="#FFFFFF"
                 android:layout_marginTop="30dp"
                 android:layout_alignParentLeft="true"
                 />
 
-            <EditText android:layout_width="350dp"
+            <EditText
+                android:id="@+id/summary"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:hint="Summary"
-                android:textColor="#706c6c"
+                android:hint="@string/summary"
                 android:inputType="text"/>
 
-            <EditText android:layout_width="350dp"
+            <EditText
+                android:id="@+id/description"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:layout_marginTop="30dp"
                 android:layout_margin="15dp"
-                android:hint="Description"
+                android:hint="@string/description"
                 android:inputType="text"
                 />
         </LinearLayout>

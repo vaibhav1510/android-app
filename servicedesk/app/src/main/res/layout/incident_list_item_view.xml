@@ -8,123 +8,117 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/list_item_height"
             android:orientation="horizontal"
-        android:background="#FFFFFF"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="10dp">
+            android:background="#FFFFFF"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+        android:layout_marginTop="@dimen/list_item_margin_top">
 
             <RelativeLayout
                 android:id="@+id/state"
                 android:orientation="horizontal"
-                android:layout_width="5dp"
-                android:layout_height="@dimen/list_item_height"
-                >
+                android:layout_width="@dimen/list_item_state_width"
+                android:layout_height="@dimen/list_item_height">
             </RelativeLayout>
 
-            <TableLayout
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/list_item_height"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <TableRow android:padding="@dimen/list_item_table_row_padding"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/list_item_height">
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/customer_name"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"
+                    android:gravity="left"
+                    android:width="150dp"/>
 
-                <TableRow android:padding="2dip"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <TextView
-                        android:id="@+id/customer_name"
-                        android:layout_marginLeft="15dp"
-                        android:gravity="left"
-                        android:width="150dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/asign_date"
-                        android:text="Feb 10,2017"
-                        android:gravity="right"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"/>
-                </TableRow>
-
-                <TableRow android:padding="2dip"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp">
-                    <TextView
-                        android:id="@+id/incident_id"
-                        android:gravity="left"
-                        android:layout_marginLeft="15dp"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/impect"
-                        android:text="Impect"
-                        android:gravity="right"
-                        android:layout_marginRight="15dp"
-                        android:layout_weight="1"/>
-                </TableRow>
-
-                <TableRow android:padding="2dip"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <TextView
-                        android:textSize="20dp"
-                        android:textColor="#000000"
-                        android:id="@+id/summary"
-                        android:gravity="left"
-                        android:layout_marginLeft="15dp"
-                        android:layout_span="3"/>
-                </TableRow>
-
-                <TableRow android:padding="2dip"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                    <TextView
-                        android:textSize="15dp"
-                        android:id="@+id/description"
-                        android:text="hjdkjkjjhgfjhgjhgdfghdlkjlklkjjkllk"
-                        android:gravity="left"
-                        android:layout_marginLeft="15dp"
-                        android:layout_span="3"/>
-                </TableRow>
-                <TableRow>
-                    <TextView
-                        android:id="@+id/priority"
-                        android:textColor="#394fe4"
-                        android:layout_span="3"
-                        android:layout_marginLeft="15dp"/>
-                </TableRow>
-
-
-                <TableRow android:padding="2dip"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp">
-                    <Button
-                        android:id="@+id/status"
-                        android:text="Status"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="5dp"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="35dp"/>
+                    android:id="@+id/asign_date"
+                    android:text="Feb 10,2017"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/list_item_row_right_margin"
+                    android:layout_weight="1"/>
+            </TableRow>
 
-                    <TextView
-                        android:text="feb 10,2017"
-                        android:textStyle="bold"
-                        android:textSize="15dp"
-                        android:textColor="#e72c2c"
-                        android:layout_weight="1"
-                        android:gravity="center_vertical"
-                        android:drawableLeft="@drawable/ic_clock_icon"
-                        android:id="@+id/sla_date" />
+            <TableRow android:padding="@dimen/list_item_table_row_padding"
+                android:layout_width="match_parent"
+                android:layout_height="30dp">
+                <TextView
+                    android:id="@+id/incident_id"
+                    android:gravity="left"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/impect"
+                    android:text="Impect"
+                    android:gravity="right"
+                    android:layout_marginRight="@dimen/list_item_row_right_margin"
+                    android:layout_weight="1"/>
+            </TableRow>
 
-                    <TextView
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:textColor="#e72c2c"
-                        android:gravity="right"
-                        android:layout_weight="1"
-                        android:id="@+id/textView3" />
-                </TableRow>
-            </TableLayout>
+            <TableRow android:padding="@dimen/list_item_table_row_padding"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:textSize="20dp"
+                    android:textColor="#000000"
+                    android:id="@+id/summary"
+                    android:gravity="left"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"
+                    android:layout_span="3"/>
+            </TableRow>
+
+            <TableRow android:padding="@dimen/list_item_table_row_padding"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textSize="15dp"
+                    android:id="@+id/description"
+                    android:text="hjdkjkjjhgfjhgjhgdfghdlkjlklkjjkllk"
+                    android:gravity="left"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"
+                    android:layout_span="3"/>
+            </TableRow>
+            <TableRow>
+                <TextView
+                    android:id="@+id/priority"
+                    android:textColor="#394fe4"
+                    android:layout_span="3"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"/>
+            </TableRow>
+
+
+            <TableRow android:padding="@dimen/list_item_table_row_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+                <Button
+                    android:id="@+id/status"
+                    android:text="Status"
+                    android:layout_marginLeft="@dimen/list_item_row_left_margin"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"/>
+
+                <TextView
+                    android:text="feb 10,2017"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:textColor="#e72c2c"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:drawableLeft="@drawable/ic_clock_icon"
+                    android:id="@+id/sla_date"
+                    android:layout_marginLeft="40dp"/>
+
+            </TableRow>
+        </TableLayout>
     </RelativeLayout>
 </RelativeLayout>

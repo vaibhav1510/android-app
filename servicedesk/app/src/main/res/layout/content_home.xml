@@ -13,13 +13,13 @@ tools:context="com.servicedeskmanager.servicedesk.HomeActivity"
 tools:showIn="@layout/app_bar_home"
 android:background="#e1dede">
 
-<ListView
-    android:id="@+id/incidentlist"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentStart="true" />
+    <ListView
+        android:id="@+id/incidentlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
 

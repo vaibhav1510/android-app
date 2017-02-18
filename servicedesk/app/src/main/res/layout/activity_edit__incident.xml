@@ -23,6 +23,7 @@
                     android:background="#FFFFFF">
 
                     <TextView
+                        android:id="@+id/incident_id"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:textColor="#000000"
@@ -36,7 +37,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="   Requester Details"
+                    android:text="@string/requester_details"
+                    android:layout_marginLeft="10dp"
                     android:textSize="20dp"
                     android:id="@+id/textView2"
                     android:layout_marginBottom="5dp"
@@ -45,7 +47,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -79,7 +80,6 @@
                             android:id="@+id/req_name"
                             android:textSize="20dp"
                             android:textColor="#000000"
-                            android:text="Harshita Gupta"
                             android:hint="Requester Name"
                             />
                         <TextView
@@ -90,7 +90,6 @@
                             android:id="@+id/req_phon_no"
                             android:textSize="17dp"
                             android:textColor="#000000"
-                            android:text="758738566"
                             android:hint="Phone No"
                             android:gravity="center"
                             android:drawableLeft="@drawable/ic_phone"/>
@@ -102,7 +101,6 @@
                             android:layout_marginBottom="5dp"
                             android:textSize="17dp"
                             android:textColor="#000000"
-                            android:text="har@gmail.com"
                             android:hint="Email Id"
                             android:gravity="center"
                             android:drawableLeft="@drawable/ic_mail"
@@ -114,13 +112,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@android:color/darker_gray" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="   Resolution Details"
+                    android:text="@string/resolution_details"
+                    android:layout_marginLeft="10dp"
                     android:textSize="20dp"
                     android:layout_marginBottom="5dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/textView4" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -139,7 +140,8 @@
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:layout_height="wrap_content"
                             android:layout_width="170dp"
-                            android:hint="  State"
+                            android:hint="@string/state"
+                            android:layout_marginLeft="10dp"
                             android:layout_alignParentStart="true"
                             android:textColorHint="@android:color/white"
                             android:layout_alignParentLeft="true"
@@ -149,12 +151,12 @@
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:layout_height="wrap_content"
                             android:layout_width="170dp"
-                            android:hint="  Status"
+                            android:hint="@string/status"
                             android:layout_alignParentStart="true"
                             android:textColorHint="@android:color/white"
                             android:layout_alignParentLeft="true"
                             android:id="@+id/edit_status"
-                            android:layout_marginLeft="5dp"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="30dp"
                             />
                     </LinearLayout>
@@ -166,18 +168,18 @@
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:hint="Description"
+                        android:hint="@string/description"
                         android:inputType="text"
                         android:id="@+id/editText" />
 
                     <EditText android:layout_width="350dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/edit_sintorm"
+                        android:id="@+id/edit_symptom"
                         android:paddingLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"
-                        android:hint="Sintorm"
+                        android:hint="@string/symptom"
                         android:inputType="text"/>
 
                     <EditText android:layout_width="350dp"
@@ -185,7 +187,16 @@
                         android:paddingLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_margin="15dp"
-                        android:hint="Resolution"
+                        android:hint="@string/resolution"
+                        android:inputType="text"
+                        android:id="@+id/editText2" />
+
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_margin="15dp"
+                        android:hint="@string/root_cause"
                         android:inputType="text"
                         />
                     <EditText android:layout_width="350dp"
@@ -193,7 +204,7 @@
                         android:paddingLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_margin="15dp"
-                        android:hint="Route Calls"
+                        android:hint="@string/trouble_reason"
                         android:inputType="text"
                         />
                     <EditText android:layout_width="350dp"
@@ -201,15 +212,7 @@
                         android:paddingLeft="10dp"
                         android:layout_marginTop="30dp"
                         android:layout_margin="15dp"
-                        android:hint="Trouble Resion"
-                        android:inputType="text"
-                        />
-                    <EditText android:layout_width="350dp"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:layout_marginTop="30dp"
-                        android:layout_margin="15dp"
-                        android:hint="Recovery Action"
+                        android:hint="@string/recovery_action"
 
                         android:inputType="text"
                         />
@@ -221,7 +224,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="   Incident Details"
+                    android:text="@string/incident_details"
+                    android:layout_marginLeft="10dp"
                     android:textSize="20dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="10dp"/>
@@ -238,7 +242,7 @@
                         android:id="@+id/edit_category"
                         android:layout_height="wrap_content"
                         android:layout_width="350dp"
-                        android:hint="  Category"
+                        android:hint="@string/category"
                         android:layout_alignParentStart="true"
                         android:textColorHint="@android:color/white"
                         android:layout_marginTop="30dp"
@@ -246,10 +250,10 @@
                         />
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                        android:id="@+id/edit_impectservice"
+                        android:id="@+id/edit_impactservice"
                         android:layout_height="wrap_content"
                         android:layout_width="350dp"
-                        android:hint="  Impect Service"
+                        android:hint="@string/impact_service"
                         android:layout_alignParentStart="true"
                         android:textColorHint="@android:color/white"
                         android:layout_marginTop="30dp"
@@ -259,7 +263,7 @@
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:layout_height="wrap_content"
                         android:layout_width="350dp"
-                        android:hint="  Classification"
+                        android:hint="@string/classification"
                         android:layout_alignParentStart="true"
                         android:textColorHint="@android:color/white"
                         android:layout_marginTop="30dp"
@@ -276,28 +280,28 @@
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:layout_height="wrap_content"
                             android:layout_width="110dp"
-                            android:hint="  Impact"
+                            android:hint="@string/impact"
                             android:layout_alignParentStart="true"
                             android:textColorHint="@android:color/white"
                             android:layout_marginTop="30dp"
                             android:layout_alignParentLeft="true"
-                            android:id="@+id/edit_impect"
+                            android:id="@+id/edit_impact"
                             />
 
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:layout_height="wrap_content"
                             android:layout_width="110dp"
-                            android:hint=" Urgency"
+                            android:hint="@string/urgency"
                             android:layout_alignParentStart="true"
                             android:textColorHint="@android:color/white"
                             android:layout_marginTop="30dp"
                             android:layout_alignParentLeft="true"
-                            android:id="@+id/edit_urgancy"
+                            android:id="@+id/edit_urgency"
                             />
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                             android:layout_height="wrap_content"
                             android:layout_width="110dp"
-                            android:hint=" Priority"
+                            android:hint="@string/priority"
                             android:layout_alignParentStart="true"
                             android:textColorHint="@android:color/white"
                             android:layout_marginTop="30dp"
