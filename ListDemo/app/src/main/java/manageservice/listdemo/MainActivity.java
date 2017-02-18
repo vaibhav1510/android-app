@@ -44,8 +44,6 @@ public class  MainActivity extends Activity {
     public void setListData()
     {
 
-      
-
         final ListModel sched1 = new ListModel();
         final ListModel schel2 = new ListModel();
 
@@ -64,7 +62,6 @@ public class  MainActivity extends Activity {
         schel2.setDescription( "my RAM is not working");
         /******** Take Model Object in ArrayList **********/
         CustomListViewValuesArr.add( schel2 );
-
     }
 
 
