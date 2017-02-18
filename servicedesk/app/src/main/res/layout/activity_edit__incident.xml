@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_incident_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context="com.servicedeskmanager.servicedesk.Edit_Incident">
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF">
+
+                    <TextView
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:text="IC1093983"
+                        android:textSize="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="20dp"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="   Requester Details"
+                    android:textSize="20dp"
+                    android:id="@+id/textView2"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="#FFFFFF">
+
+                    <LinearLayout
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_profile"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="15dp">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/req_name"
+                            android:textSize="20dp"
+                            android:textColor="#000000"
+                            android:text="Harshita Gupta"
+                            android:hint="Requester Name"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:id="@+id/req_phon_no"
+                            android:textSize="17dp"
+                            android:textColor="#000000"
+                            android:text="758738566"
+                            android:hint="Phone No"
+                            android:gravity="center"
+                            android:drawableLeft="@drawable/ic_phone"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:textSize="17dp"
+                            android:textColor="#000000"
+                            android:text="har@gmail.com"
+                            android:hint="Email Id"
+                            android:gravity="center"
+                            android:drawableLeft="@drawable/ic_mail"
+                            />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="   Resolution Details"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="@android:color/white"
+                        >
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_height="wrap_content"
+                            android:layout_width="170dp"
+                            android:hint="  State"
+                            android:layout_alignParentStart="true"
+                            android:textColorHint="@android:color/white"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/edit_state"
+                            android:layout_marginTop="30dp"
+                            />
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_height="wrap_content"
+                            android:layout_width="170dp"
+                            android:hint="  Status"
+                            android:layout_alignParentStart="true"
+                            android:textColorHint="@android:color/white"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/edit_status"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginTop="30dp"
+                            />
+                    </LinearLayout>
+
+
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:hint="Description"
+                        android:inputType="text"
+                        android:id="@+id/editText" />
+
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edit_sintorm"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:hint="Sintorm"
+                        android:inputType="text"/>
+
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_margin="15dp"
+                        android:hint="Resolution"
+                        android:inputType="text"
+                        />
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_margin="15dp"
+                        android:hint="Route Calls"
+                        android:inputType="text"
+                        />
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_margin="15dp"
+                        android:hint="Trouble Resion"
+                        android:inputType="text"
+                        />
+                    <EditText android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_margin="15dp"
+                        android:hint="Recovery Action"
+
+                        android:inputType="text"
+                        />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="   Incident Details"
+                    android:textSize="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="10dp"/>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:background="@android:color/white">
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/edit_category"
+                        android:layout_height="wrap_content"
+                        android:layout_width="350dp"
+                        android:hint="  Category"
+                        android:layout_alignParentStart="true"
+                        android:textColorHint="@android:color/white"
+                        android:layout_marginTop="30dp"
+                        android:layout_alignParentLeft="true"
+                        />
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:id="@+id/edit_impectservice"
+                        android:layout_height="wrap_content"
+                        android:layout_width="350dp"
+                        android:hint="  Impect Service"
+                        android:layout_alignParentStart="true"
+                        android:textColorHint="@android:color/white"
+                        android:layout_marginTop="30dp"
+                        android:layout_alignParentLeft="true"
+                        />
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_height="wrap_content"
+                        android:layout_width="350dp"
+                        android:hint="  Classification"
+                        android:layout_alignParentStart="true"
+                        android:textColorHint="@android:color/white"
+                        android:layout_marginTop="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/edit_classification"
+                        />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="30dp">
+
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_height="wrap_content"
+                            android:layout_width="110dp"
+                            android:hint="  Impact"
+                            android:layout_alignParentStart="true"
+                            android:textColorHint="@android:color/white"
+                            android:layout_marginTop="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/edit_impect"
+                            />
+
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_height="wrap_content"
+                            android:layout_width="110dp"
+                            android:hint=" Urgency"
+                            android:layout_alignParentStart="true"
+                            android:textColorHint="@android:color/white"
+                            android:layout_marginTop="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/edit_urgancy"
+                            />
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_height="wrap_content"
+                            android:layout_width="110dp"
+                            android:hint=" Priority"
+                            android:layout_alignParentStart="true"
+                            android:textColorHint="@android:color/white"
+                            android:layout_marginTop="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/edit_priority"
+                            />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+
+
