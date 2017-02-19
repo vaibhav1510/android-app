@@ -63,5 +63,6 @@ public class  Edit_Incident extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
+        this.finish();
     }
 }

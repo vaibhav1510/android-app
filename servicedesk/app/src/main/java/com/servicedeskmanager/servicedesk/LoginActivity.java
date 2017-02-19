@@ -3,8 +3,10 @@ package com.servicedeskmanager.servicedesk;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -29,6 +31,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,10 +65,28 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText passwordView;
     private EditText domainView;
     private View progress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        emailView = (AutoCompleteTextView) findViewById(R.id.email);
+        passwordView = (EditText) findViewById(R.id.password);
+        domainView = (EditText) findViewById(R.id.Domain);
+
+        UserDbHelper dbhelper = new UserDbHelper(this);
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        dbhelper.dbInsert(db, emailView.getText().toString(), passwordView.getText().toString());
+        Toast.makeText(getBaseContext(), "Data saved", Toast.LENGTH_SHORT).show();
+        dbhelper.close();
+
+//        SQLiteDatabase mydatabase = openOrCreateDatabase("dmx_db",MODE_PRIVATE, null);
+//        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS login_tables(username VARCHAR,password VARCHAR);");
+//        String insertq = String.format("INSERT INTO login_tables VALUES('%s','%s');"
+//                ,emailView.getText().toString(),passwordView.getText().toString());
+//        mydatabase.execSQL(insertq);
+//        mydatabase.close();
         // Set up the login form.
         emailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();

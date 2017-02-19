@@ -68,7 +68,8 @@ public class Add_incident extends AppCompatActivity {
         System.out.println(jObj);
     }
 
-    @Override
-    public void onBackPressed(){
-    }
+//    @Override
+//    public void onBackPressed(){
+//        this.finish();
+//    }
 }
