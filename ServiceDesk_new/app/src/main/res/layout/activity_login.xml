@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context="com.servicedeskmanager.servicedesk.LoginActivity"
+        android:background="@color/login_background"
+        >
+
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        android:maxWidth="25dp"
+        android:minWidth="25dp"
+        android:maxHeight="25dp"
+        android:minHeight="25dp"
+        android:layout_weight="2"
+        android:layout_gravity="center"/>
+
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="fill_parent" android:layout_height="fill_parent">-->
+        <!-- Login progress -->
+    <LinearLayout
+        android:layout_width="284dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="65dp"
+        android:background="@android:color/white"
+        android:id="@+id/loginmsgContainer">
+
+        <ImageView
+            android:id="@+id/everest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_login"
+            android:layout_marginTop="35dp"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_msg"
+            android:text="Error.."
+            android:layout_marginTop="15dp"
+            android:background="@color/colorAccent"
+            android:textColor="#ea5f5f"
+            android:visibility="invisible"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="35dp"
+            android:hint="Username"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            />
+
+        <AutoCompleteTextView
+            android:id="@+id/Domain"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Domain"
+            android:inputType="textUri"
+            android:maxLines="1"
+            />
+
+            <Button
+                android:id="@+id/login"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="24dp"
+                android:text="Log in"
+                android:background="@color/colorLogInButton"
+                android:textColor="@android:color/white"
+                android:textSize="20dp"
+                />
+    </LinearLayout>
+
+<!--</ScrollView>-->
+</LinearLayout>
