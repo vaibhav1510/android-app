@@ -70,6 +70,14 @@ public class LoginActivity extends AppCompatActivity implements RestFulResult {
                         startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
                     }
                 })
+                .setNeutralButton("On MobileData", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
+                        startActivity(intent);
+                        // this.finish();
+                    }
+                })
                 .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                       // this.finish();

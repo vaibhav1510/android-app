@@ -40,6 +40,8 @@ public class  Edit_Incident extends AppCompatActivity
     String[] URGENCYLIST = {"Low", "Medium","High"};
     String[] PRIORITYLIST = {"Low", "Medium","High"};
 
+    EditIncidentModel editinci;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +93,7 @@ public class  Edit_Incident extends AppCompatActivity
         MaterialBetterSpinner prioritySpinner = (MaterialBetterSpinner) findViewById(R.id.edit_priority);
         prioritySpinner.setAdapter(arrayAdapter8);
 
-        EditIncidentModel editinci = getData();
+        getData();
 
         incidentId.setText(editinci.getDisplay_id());
         reqName.setText(editinci.getFirstName());
@@ -111,7 +113,7 @@ public class  Edit_Incident extends AppCompatActivity
 
     }
 
-    public EditIncidentModel getData() {
+    public void getData() {
         Map<String, Object> editMap=new HashMap<String,Object>();
         Map<String, String> queryParam=new HashMap<String,String>();
 
@@ -124,9 +126,6 @@ public class  Edit_Incident extends AppCompatActivity
         editMap.put("queryparam", queryParam);
         RestFulGet restFulGet = new RestFulGet(this, this.getApplication(), "Please Wait", "SingleIncident", true);
         restFulGet.execute(editMap);
-
-        return null;
-
     }
     @Override
     public void onResfulResponse(String result, String responseFor) {
@@ -134,11 +133,11 @@ public class  Edit_Incident extends AppCompatActivity
         if (responseFor.equals("SingleIncident")) {
 
             SDListPaginationResponse response = gson.fromJson(result, SDListPaginationResponse.class);
-            EditResponseData inci_obj = gson.fromJson(gson.toJson(response.getResults()),
+            EditResponseData edit_resp = gson.fromJson(gson.toJson(response.getResults()),
                     EditResponseData.class);
-            ArrayList<EditIncidentModel> inci_list = inci_obj.getEditIncident();
-           // int i = inci_list.size();
-            // Log.i("Size", i+ "");
+
+            edit_obj = edit_resp.getEditIncident();
+            Log.i("Size", edit_resp.getEditIncident().getCategory_name());
         }
     }
     @Override

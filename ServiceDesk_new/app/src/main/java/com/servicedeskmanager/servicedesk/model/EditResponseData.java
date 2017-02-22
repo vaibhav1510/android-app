@@ -7,13 +7,13 @@ import java.util.ArrayList;
  */
 
 public class EditResponseData {
-        private ArrayList<EditIncidentModel> editIncident;
+        private EditIncidentModel editIncident;
 
-        public ArrayList<EditIncidentModel> getEditIncident() {
+        public EditIncidentModel getEditIncident() {
             return editIncident;
         }
 
-        public void setEditIncident(ArrayList<EditIncidentModel> editIncidentModels) {
+        public void setEditIncident(EditIncidentModel editIncidentModels) {
             this.editIncident= editIncident;
         }
     }
