@@ -32,7 +32,7 @@ public class UserDbHelper extends SQLiteOpenHelper {
         ContentValues vals = new ContentValues();
         vals.put("username",username);
         vals.put("password",password);
-        db.insert("login_table", null, vals);
+        db.insert("login_tables", null, vals);
         Log.e("DATABASE OPERATIONS", "one row insert...");
     }
     @Override
