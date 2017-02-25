@@ -75,12 +75,13 @@ public class LoginActivity extends AppCompatActivity implements RestFulResult {
                         Intent intent = new Intent(Intent.ACTION_MAIN);
                         intent.setClassName("com.android.phone", "com.android.phone.NetworkSetting");
                         startActivity(intent);
-                        // this.finish();
+                        LoginActivity.this.finish();
                     }
                 })
                 .setNegativeButton("Quit", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                      // this.finish();
+//                        dialog.dismiss();
+                        LoginActivity.this.finish();
                     }
                 });
         AlertDialog alert = builder.create();

@@ -136,7 +136,7 @@ public class  Edit_Incident extends AppCompatActivity
             EditResponseData edit_resp = gson.fromJson(gson.toJson(response.getResults()),
                     EditResponseData.class);
 
-            edit_obj = edit_resp.getEditIncident();
+            editinci = edit_resp.getEditIncident();
             Log.i("Size", edit_resp.getEditIncident().getCategory_name());
         }
     }
