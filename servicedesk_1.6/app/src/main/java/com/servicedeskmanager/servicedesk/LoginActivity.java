@@ -103,9 +103,12 @@ public class LoginActivity extends AppCompatActivity implements RestFulResult {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                attemptLogin();
+//                attemptLogin();
                 progressBar = (ProgressBar) findViewById(R.id.login_progress);
                 progressBar.setVisibility(View.VISIBLE);
+
+                progressBar.setVisibility(View.GONE);
+                SDUtil.callIntent(LoginActivity.this, HomeActivity.class, LoginActivity.this, "no");
             }
         });
         progress = findViewById(R.id.login_progress);
@@ -257,12 +260,17 @@ public class LoginActivity extends AppCompatActivity implements RestFulResult {
             loginRequest.setUsername(email);
             loginRequest.setPassword(password);
             Map<String, Object> loginMap = new HashMap<String, Object>();
-            loginMap.put("baseurl", domain);
+            loginMap.put("baseurl", RestfulEndpoints.Base.get());
+//            loginMap.put("baseurl", domain);
             loginMap.put("path", RestfulEndpoints.Login.get());
             loginMap.put("data", loginRequest);
+
+
             RestFulPost restFulPost = new RestFulPost(this, this.getApplication(), "Please Wait", "Login", false);
             restFulPost.execute(loginMap);
+
         }
+
     }
 
     private boolean isEmailValid(String email) {
@@ -304,23 +312,29 @@ public class LoginActivity extends AppCompatActivity implements RestFulResult {
     }
 
     @Override
-    public void onResfulResponse(String result, String responseFor) {
+    public void onResfulResponse(String result, String responseFor, ResponseHandler handler) {
         Gson gson = new Gson();
         SDResponse response = gson.fromJson(result, SDResponse.class);
 
-        if (responseFor.equals("Login")) {
+        TextView loginmsg = null;
+        loginmsg = (TextView) findViewById(R.id.login_msg);
 
-            TextView loginmsg = null;
-            loginmsg = (TextView) findViewById(R.id.login_msg);
+        if(!handler.successful()){
+            Log.i(handler.exp.getMessage(), "null");
+            loginmsg.setText(" Error from server ");
+            loginmsg.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+            return;
+        }
+
+        if (responseFor.equals("Login")) {
 
             if(response==null) {
                 Log.i("response", "null");
                 loginmsg.setText(" Invalid User Id or Password! ");
                 loginmsg.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
-            }
-            else
-            if (response != null) {
+            }else if (response != null) {
                 if (response.getToken() != null) {
                     SDUtil.setSession(this, "token", response.getToken());
                     Log.i("response", "not null");

@@ -8,7 +8,7 @@ import java.util.Map;
  * Created by Admin-PC on 2/21/2017.
  */
 
-public class EditIncidentModel {
+public class    EditIncidentModel {
 
     private BigInteger id;
     private String display_id;

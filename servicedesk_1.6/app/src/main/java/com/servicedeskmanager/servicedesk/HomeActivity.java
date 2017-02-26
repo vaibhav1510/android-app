@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.servicedeskmanager.servicedesk.adapter.IncidentListAdapter;
@@ -85,7 +86,9 @@ public class HomeActivity extends AppCompatActivity
         queryParam.put("items_per_page", "25");
         queryParam.put("sort", "-creation_time");
         String domainShared = SDUtil.getSession(this, "domain");
-        homeMap.put("baseurl", domainShared);
+
+        homeMap.put("baseurl", RestfulEndpoints.Base.get());
+//        homeMap.put("baseurl", domainShared);
         homeMap.put("path", RestfulEndpoints.AllIncident.get());
         homeMap.put("queryparam", queryParam);
         RestFulGet restFulGet = new RestFulGet(this, this.getApplication(), "Please Wait", "AllIncident", true);
@@ -148,7 +151,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
     @Override
-    public void onResfulResponse(String result, String responseFor) {
+    public void onResfulResponse(String result, String responseFor, ResponseHandler handler) {
         Gson gson = new Gson();
         if (responseFor.equals("AllIncident")) {
 
@@ -164,7 +167,12 @@ public class HomeActivity extends AppCompatActivity
 
                 public void onItemClick(AdapterView <?> parentAdapter, View view, int position,
                                         long id) {
+
+                    TextView inci_id =(TextView)view.findViewById(R.id.incident_id);
+                    String incidentId=inci_id.toString();
                     Intent intent=new Intent(HomeActivity.this,Edit_Incident.class);
+                    intent.putExtra("Incident_id",incidentId);
+
                     startActivity(intent);
 
                 }

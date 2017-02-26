@@ -1,20 +1,40 @@
 package com.servicedeskmanager.servicedesk;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.servicedeskmanager.servicedesk.model.EditIncidentModel;
+import com.servicedeskmanager.servicedesk.model.LoginRequest;
+import com.servicedeskmanager.servicedesk.restful.RestFulGet;
+import com.servicedeskmanager.servicedesk.restful.RestFulPost;
+import com.servicedeskmanager.servicedesk.restful.RestFulResult;
+import com.servicedeskmanager.servicedesk.restful.RestfulEndpoints;
+import com.servicedeskmanager.servicedesk.util.SDUtil;
 import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
-public class  Edit_Incident extends AppCompatActivity {
+import java.io.File;
+import java.sql.SQLOutput;
+import java.util.HashMap;
+import java.util.Map;
+
+public class  Edit_Incident extends AppCompatActivity implements RestFulResult {
 
     TextView incidentId, reqName, reqPhone, reqEmail;
     EditText description, symptom,resolution ;
     EditText rootCause;
     EditText troubleReason;
     EditText recoveryAction;
+
+    MaterialBetterSpinner state;
 
     String[] STATELIST = {"Open", "In progress","On Hold", "Resolve"};
     String[] STATUSLIST = {"New", "Assigned"};
@@ -29,9 +49,28 @@ public class  Edit_Incident extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit__incident);
-        getIntent();
+
+        String inciId;
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                inciId= null;
+            } else {
+                inciId= extras.getString("Incident_id");
+            }
+        } else {
+            inciId= (String) savedInstanceState.getSerializable("Incident_Id");
+        }
+
+        if(inciId==null){
+            Log.i("Inc_id", inciId);
+            return;
+        }
 
         incidentId=(TextView)findViewById(R.id.incident_id);
+        incidentId.setText(inciId);
+        prePopulateData(inciId);
+
         reqName=(TextView)findViewById(R.id.req_name);
         reqPhone=(TextView)findViewById(R.id.req_phon_no);
         reqEmail=(TextView)findViewById(R.id.req_email);
@@ -74,9 +113,71 @@ public class  Edit_Incident extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter8 = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, PRIORITYLIST);
         MaterialBetterSpinner prioritySpinner = (MaterialBetterSpinner) findViewById(R.id.edit_priority);
         prioritySpinner.setAdapter(arrayAdapter8);
+
+
+
+        Button loginButton = (Button) findViewById(R.id.login);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditIncidentModel model = new EditIncidentModel();
+                model.setCategory_name("cat name");
+                model.setCategory_name("cat name");
+                model.setCategory_name("cat name");
+                model.setCategory_name("cat name");
+                model.setCategory_name("cat name");
+
+                sendData(model);
+            }
+        });
+
     }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+    }
+
+
+    private void prePopulateData(String inciId){
+        String domain = SDUtil.getSession(this,"domain");
+        Map<String, Object> fetchIncident = new HashMap<String, Object>();
+        fetchIncident.put("baseurl", RestfulEndpoints.Base.get());
+//        fetchIncident.put("baseurl", domain);
+        fetchIncident.put("path", RestfulEndpoints.Incident.get()+ inciId);
+
+        RestFulGet restFulGet = new RestFulGet(this, this.getApplication(), "Please Wait", "Incident", true);
+        restFulGet.execute(fetchIncident);
+    }
+
+
+    private void sendData(EditIncidentModel model ){
+        String domain = SDUtil.getSession(this,"domain");
+        Map<String, Object> fetchIncident = new HashMap<String, Object>();
+        fetchIncident.put("baseurl", RestfulEndpoints.Base.get());
+//        fetchIncident.put("baseurl", domain);
+        fetchIncident.put("path", RestfulEndpoints.Incident.get()+ model.getId());
+        fetchIncident.put("data", model);
+
+        RestFulPost restFulGet = new RestFulPost(this, this.getApplication(), "Please Wait", "Incident", true);
+        restFulGet.execute(fetchIncident);
+    }
+
+    @Override
+    public void onResfulResponse(String result, String responseFor, ResponseHandler handler) {
+        Gson gson = new Gson();
+        EditIncidentModel response = gson.fromJson(result, EditIncidentModel.class);
+
+        incidentId.setText(response.getDisplay_id());
+        reqName.setText(response.getFirstName());
+        reqPhone.setText(response.getPhone());
+        reqEmail.setText(response.getEmail());
+        description.setText(response.getDescription());
+        symptom.setText(response.getSymptom());
+        resolution.setText(response.getResolution());
+        rootCause.setText(response.getRootCause());
+        troubleReason.setText(response.getTroubleReason());
+        recoveryAction.setText(response.getRecoveryAction());
+        state.setText(response.getState());
+
     }
 }

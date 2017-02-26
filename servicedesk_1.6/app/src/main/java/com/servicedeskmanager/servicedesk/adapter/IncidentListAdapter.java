@@ -38,12 +38,12 @@ public class IncidentListAdapter extends BaseAdapter implements View.OnClickList
         /***********  Layout inflator to call external xml layout () ***********/
         inflater = ( LayoutInflater )activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-    }
+          }
 
     /******** What is the size of Passed Arraylist Size ************/
     public int getCount() {
 
-        if(data.length<=0)
+        if(data==null || data.length<=0)
             return 1;
         return data.length;
     }
@@ -102,7 +102,7 @@ public class IncidentListAdapter extends BaseAdapter implements View.OnClickList
         else
             holder=(ViewHolder)vi.getTag();
 
-        if(data.length<=0)
+        if(data==null || data.length<=0)
         {
             holder.customername.setText("No Data");
 

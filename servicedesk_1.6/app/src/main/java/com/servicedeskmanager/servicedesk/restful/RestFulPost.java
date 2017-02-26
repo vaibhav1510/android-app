@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.servicedeskmanager.servicedesk.ResponseHandler;
 import com.servicedeskmanager.servicedesk.util.SDUtil;
 
 import java.util.Map;
@@ -24,6 +25,9 @@ public class RestFulPost extends AsyncTask<Map, Void, String> {
     String task;
     Boolean isToken;
     Context context;
+
+    ResponseHandler handler;
+
     RestFulPost(){
 
     }
@@ -37,7 +41,7 @@ public class RestFulPost extends AsyncTask<Map, Void, String> {
         Asycdialog = new ProgressDialog(context);
     }
 
-    @Override
+        @Override
     protected String doInBackground(Map... params) {
         String bean =null;
         try {
@@ -60,14 +64,14 @@ public class RestFulPost extends AsyncTask<Map, Void, String> {
                         .post(Entity.entity(gson.toJson(dataMap), MediaType.APPLICATION_JSON),
                                 String.class);
             }
-
             Log.i("bean", bean);
+            this.handler = ResponseHandler.createSuccessful();
         }
         catch (Exception e){
             e.printStackTrace();
             Log.i("Error on RestFulPost:::", e.getMessage());
+            this.handler = ResponseHandler.createForFail(e);
         }
-
         return bean;
     }
 
@@ -82,7 +86,7 @@ public class RestFulPost extends AsyncTask<Map, Void, String> {
     @Override
     protected void onPostExecute(String s) {
         Asycdialog.dismiss();
-        restFulResult.onResfulResponse(s,task);
+        restFulResult.onResfulResponse(s,task, handler);
     }
 
 
