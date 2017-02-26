@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.widget.TextView;
 
@@ -20,6 +21,13 @@ public class ItemAssetList extends AppCompatActivity {
         Spannable spn = (Spannable) inveId.getText();
         spn.setSpan(new BackgroundColorSpan(Color.RED), 0, 7,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         spn.setSpan(new StyleSpan(android.graphics.Typeface.BOLD_ITALIC),0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+//        TextView inveId =(TextView)this.findViewById(R.id.hello_world);
+//        inveId.setText("You are welcome in Chennai",TextView.BufferType.SPANNABLE);
+//        Spannable spn = (Spannable) inveId.getText();
+//        spn.setSpan(new BackgroundColorSpan(Color.RED), 3, 7,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        spn.setSpan(new StyleSpan(android.graphics.Typeface.BOLD_ITALIC),0, 7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+//        spn.setSpan(new ForegroundColorSpan(Color.GREEN),6, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
 
     }
