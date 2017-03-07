@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_incident_add"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".Add_incident">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+                <EditText
+                    android:id="@+id/searchData"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_action_search"
+                    android:hint="@string/Search_query_hint"/>
+                <ImageButton
+                    android:id="@+id/reqSearchImageBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:src="@drawable/ic_action_search"
+                    />
+                <!--<SearchView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/details_left_right_margin"-->
+                    <!--android:layout_marginRight="@dimen/details_left_right_margin"-->
+                    <!--android:layout_marginTop="20dp"-->
+                    <!--android:inputType="text"-->
+                    <!--android:paddingLeft="10dp"-->
+                    <!--android:queryHint="@string/Search_query_hint" />-->
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="@dimen/add_title_margin_left"
+                android:layout_marginTop="@dimen/add_title_margin_top"
+                android:text="@string/requester_details"
+                android:textSize="@dimen/add_title_font_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_profile" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:id="@+id/req_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:hint="@string/req_name"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/req_name_text_size" />
+
+                    <TextView
+                        android:id="@+id/req_phon_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/ic_phone"
+                        android:gravity="center"
+                        android:hint="Phone No"
+                        android:inputType="phone"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/req_sub_details_text_size" />
+
+                    <TextView
+                        android:id="@+id/req_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:drawableLeft="@drawable/ic_mail"
+                        android:gravity="center"
+                        android:hint="Email Id"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/req_sub_details_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/edit_title_margin_bottom"
+                android:layout_marginLeft="@dimen/add_title_margin_left"
+                android:layout_marginTop="@dimen/add_title_margin_top"
+                android:text="@string/item_asset"
+                android:textSize="@dimen/add_title_font_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_asset_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/add_title_margin_left"
+                android:layout_marginTop="@dimen/add_title_margin_top"
+                android:text="@string/details"
+                android:textSize="@dimen/add_title_font_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/category" />
+
+                <Spinner
+                    android:id="@+id/add_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/impact_service" />
+
+                <Spinner
+                    android:id="@+id/add_impact_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/urgency" />
+
+                <Spinner
+                    android:id="@+id/add_urgency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/impact" />
+
+                <Spinner
+                    android:id="@+id/add_impact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/priority" />
+
+                <Spinner
+                    android:id="@+id/add_priority"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/state" />
+
+                <Spinner
+                    android:id="@+id/add_state"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/status" />
+
+                <Spinner
+                    android:id="@+id/add_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/summary" />
+
+                <EditText
+                    android:id="@+id/add_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top"
+                    android:inputType="text" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_view_margin_left"
+                    android:layout_marginTop="@dimen/text_view_margin_top"
+                    android:text="@string/description" />
+
+
+                <EditText
+                    android:id="@+id/add_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/add_text_margin_left"
+                    android:layout_marginRight="@dimen/add_text_margin_right"
+                    android:layout_marginTop="@dimen/add_text_margin_top"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+
+
+
+
+
