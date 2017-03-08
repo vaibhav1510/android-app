@@ -26,7 +26,7 @@ import java.util.List;
 
 public class SelectedAssetListAdapter extends RecyclerView.Adapter<SelectedAssetListAdapter.AssetViewHolder> {
 
-    private AssetListModel assetList;
+    private AssetListModel[] assetList;
     private Activity activity;
     private static LayoutInflater inflater = null;
     private final OnItemClickListener listener;

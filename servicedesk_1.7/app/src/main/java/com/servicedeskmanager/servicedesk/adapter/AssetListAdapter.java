@@ -9,6 +9,7 @@ import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.view.View;
@@ -75,12 +76,24 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
             inventorySpan.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             inventory_id.setText(inventorySpan);
 
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    View view =((RecyclerView)itemView).findChildViewUnder(e.getX(), e.getY());
+//                    if (actionMode != null) {
+//                        return;
+//                    }
+//                    actionMode =
+//                            startActionMode(RecyclerViewDemoActivity.this);
+//                    int idx = recyclerView.getChildPosition(view);
+//                    myToggleSelection(idx);
+//                    super.onLongPress(e);
+
                     listener.onItemClick(tempValues);
                 }
             });
+
         }
     }
 
@@ -110,13 +123,14 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
         return selectedItems.size();
     }
 
-  /*  public List<AssetListModel> getSelectedItems() {
-        List<AssetListModel> items = new ArrayList<Integer>(selectedItems.size());
+    public List<AssetListModel> getSelectedItems() {
+        List<AssetListModel> toReturn = new ArrayList<>();
+        List<Integer> items = new ArrayList<Integer>(selectedItems.size());
         for (int i = 0; i < selectedItems.size(); i++) {
-            items.add(selectedItems.keyAt(i));
+            toReturn.add(assetList[selectedItems.keyAt(i)]);
         }
-        return items;
-    }*/
+        return toReturn;
+    }
 
     @Override
     public AssetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
