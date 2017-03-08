@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5d87af</color>
+    <color name="colorPrimaryDark">#185461</color>
+    <color name="colorAccent">#c5d9f2</color>
+    <color name="login_background">#dfeaf7</color>
+    <color name="colorLogInButton">#6996c1</color>
+    <color name="error_background">#81ef8a2c</color>
+    <color name="error_text">#fc0202</color>
+	<color name="Open">#E94B3B</color>
+    <color name="In_Progress">#FFB61C</color>
+    <color name="On_Hold">#FFFF88</color>
+    <color name="Resolved">#23AE89</color>
+    <color name="Closed">#2EC1CC</color>
+    <color name="Reopen">#1C7EBB</color>
+    <color name="Critical">#E94B3B</color>
+    <color name="High">#FFB61C</color>
+    <color name="Medium">#FFFF88</color>
+    <color name="Low">#17C1CB</color>
+    <color name="Very_low">#72D6C8</color>
+
+</resources>
