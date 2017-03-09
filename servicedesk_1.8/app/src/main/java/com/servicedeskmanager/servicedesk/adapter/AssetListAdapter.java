@@ -9,7 +9,6 @@ import android.text.Spannable;
 import android.text.style.ForegroundColorSpan;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.view.View;
@@ -27,11 +26,31 @@ import java.util.List;
 
 public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.AssetViewHolder> {
 
-    private AssetListModel[] assetList;
+    private List<AssetListModel> assetList;
     private Activity activity;
     private static LayoutInflater inflater = null;
-    private final OnItemClickListener listener;
+
     private SparseBooleanArray selectedItems;
+
+    AssetListAdapter(List<AssetListModel> modelData) {
+        if (modelData == null) {
+            throw new IllegalArgumentException("modelData must not be null");
+        }
+        assetList = modelData;
+        selectedItems = new SparseBooleanArray();
+    }
+
+    /**
+     * Adds and item into the underlying data set
+     * at the position passed into the method.
+     *
+     * @param newModelData The item to add to the data set.
+     * @param position The index of the item to remove.
+     */
+    public void addData(AssetListModel newModelData, int position) {
+        assetList.add(position, newModelData);
+        notifyItemInserted(position);
+    }
 
 
     public interface OnItemClickListener {
@@ -40,7 +59,7 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
 
     public class AssetViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView display_id, criticality, itemclass, item_type, inventory_id;
+        public TextView display_id, criticality, itemclass, item_type, inventory_id, barCode, qrCode;
 
 
         public AssetViewHolder(View vi) {
@@ -76,34 +95,59 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
             inventorySpan.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 12, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             inventory_id.setText(inventorySpan);
 
-
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    View view =((RecyclerView)itemView).findChildViewUnder(e.getX(), e.getY());
-//                    if (actionMode != null) {
-//                        return;
-//                    }
-//                    actionMode =
-//                            startActionMode(RecyclerViewDemoActivity.this);
-//                    int idx = recyclerView.getChildPosition(view);
-//                    myToggleSelection(idx);
-//                    super.onLongPress(e);
-
                     listener.onItemClick(tempValues);
+//                    tempValues.setSelected(!tempValues.isSelected());
+//                    if(tempValues.isSelected()){
+//                        //count++;
+//                        v.setBackgroundResource(R.drawable.ic_action_tick);}
+//                    else
+//                        v.setBackgroundColor(Color.WHITE);
                 }
             });
 
         }
+
     }
 
     public AssetListAdapter(Activity a, AssetListModel[] data, OnItemClickListener listener) {
         this.activity = a;
         this.assetList = data;
-        this.listener = listener;
+       // this.listener = listener;
     }
 
-    //To perform the action on select and deselect the item
+    public void removeData(int position) {
+        assetList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public AssetListModel getItem(int position) {
+        return assetList.get(position);
+    }
+
+    @Override
+    public AssetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        /***********  Layout inflator to call external xml layout () ***********/
+        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View itemView = inflater.inflate(R.layout.asset_item_list_view, null);
+        return new AssetViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(AssetViewHolder holder, int position) {
+        AssetListModel tempValues = assetList.get(position);
+       // holder.bind(tempValues, listener);
+       // holder.itemView.setSelected(tempValues.isSelected());
+        holder.itemView.setActivated(selectedItems.get(position, false));
+    }
+
+    @Override
+    public int getItemCount() {
+        return assetList.size();
+    }
+
     public void toggleSelection(int pos) {
         if (selectedItems.get(pos, false)) {
             selectedItems.delete(pos);
@@ -113,6 +157,7 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
         }
         notifyItemChanged(pos);
     }
+
 
     public void clearSelections() {
         selectedItems.clear();
@@ -127,33 +172,27 @@ public class AssetListAdapter extends RecyclerView.Adapter<AssetListAdapter.Asse
         List<AssetListModel> toReturn = new ArrayList<>();
         List<Integer> items = new ArrayList<Integer>(selectedItems.size());
         for (int i = 0; i < selectedItems.size(); i++) {
-            toReturn.add(assetList[selectedItems.keyAt(i)]);
+            toReturn.add(assetList.get(selectedItems.keyAt(i)));
         }
         return toReturn;
     }
 
-    @Override
-    public AssetViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        /***********  Layout inflator to call external xml layout () ***********/
-        inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View itemView = inflater.inflate(R.layout.asset_item_list_view, null);
-        return new AssetViewHolder(itemView);
+    public final static class ListItemViewHolder extends RecyclerView.ViewHolder {
+        TextView label;
+        TextView dateTime;
+
+        public ListItemViewHolder(View itemView) {
+            super(itemView);
+          //  label = (TextView) itemView.findViewById(R.id.txt_label_item);
+          //  dateTime = (TextView) itemView.findViewById(R.id.txt_date_time);
+        }
     }
 
-    @Override
-    public void onBindViewHolder(AssetViewHolder holder, int position) {
-       System.out.println(position+"position");
-        AssetListModel tempValues = assetList[position];
-
-        System.out.println(tempValues+"tempValues");
-        holder.bind(tempValues, listener);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return assetList == null ? 0 : assetList.length;
-    }
+//
+//    @Override
+//    public int getItemCount() {
+//        return assetList == null ? 0 : assetList.size();
+//    }
 
 
 }
